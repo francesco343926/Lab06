@@ -29,3 +29,16 @@ class Controller:
 
     # Altre Funzioni Event Handler
     # TODO
+    def get_auto(self, e):
+        automobili = self._model.get_automobili()
+        for auto in automobili:
+            self._view.lista_auto.controls.append(ft.Text(f"Line {auto}"))
+            self._view.update()
+
+    def ricerca(self, e):
+        automobili = self._model.get_automobili()
+        auto= self._view.input_modello_auto
+        for auto2 in automobili:
+            if auto2.modello.casefold() == auto.value.casefold():
+                self._view.lista_auto_ricerca.controls.append(ft.Text(f"Line {auto2}"))
+                self._view.update()
